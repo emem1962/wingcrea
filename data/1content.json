@@ -1,0 +1,192 @@
+{
+  "hero": {
+    "title": "Dijital Deneyimleri Yeniden Tanımlıyoruz",
+    "subtitle": "Web, mobil ve yapay zeka projelerinde uçtan uca tasarım ve geliştirme. Markanızı geleceğe taşıyan dijital deneyimler yaratıyoruz.",
+    "ctaText": "Projeleri Gör",
+    "ctaLink": "#projects"
+  },
+  "about": {
+    "title": "Kod yazmıyoruz, deneyimler tasarlıyoruz.",
+    "description": "Wingcrea, 2006'den bu yana startup'lardan BIST100 şirketlerine kadar pek çok marka için dijital ürünler geliştiren bağımsız bir yazılım stüdyosudur.",
+    "stats": [
+      { "number": "120+", "label": "Tamamlanan Proje" },
+      { "number": "45+", "label": "Mutlu Müşteri" },
+      { "number": "18+", "label": "Yıllık Deneyim" },
+      { "number": "15", "label": "Ödül" }
+    ]
+  },
+  "services": [
+    {
+      "num": "01",
+      "title": "Web Sitesi Tasarımı",
+      "desc": "Sadece web sitesi tasarlamıyoruz — markanızı yükselten ve sonuç getiren stratejik dijital varlıklar inşa ediyoruz.",
+      "features": [
+        "Özel UI/UX Tasarımı",
+        "Tam Responsive",
+        "Performans Optimize",
+        "Erişilebilirlik Uyumlu",
+        "SEO Odaklı Yapı",
+        "Kolay İçerik Yönetimi"
+      ]
+    },
+    {
+      "num": "02",
+      "title": "E-Ticaret Çözümleri",
+      "desc": "Online mağazanız en az sizin kadar çalışmalı. Güzel tasarımı sağlam işlevsellikle birleştiren, yüksek dönüşüm sağlayan e-ticaret platformları geliştiriyoruz.",
+      "features": [
+        "Özel Mağaza Tasarımı",
+        "Güvenli Ödeme Entegrasyonu",
+        "Stok & Sipariş Yönetimi",
+        "Çoklu Para Birimi & Dil Desteği",
+        "Analitik & Dönüşüm Takibi",
+        "Ölçeklenebilir Mimari"
+      ]
+    },
+    {
+      "num": "03",
+      "title": "Sektöre Özel Yazılım",
+      "desc": "Hazır yazılımlar nadiren tam olarak uyar. İş akışlarınıza, uyumluluk ihtiyaçlarınıza ve büyüme hedeflerinize özel uygulamalar geliştiriyoruz.",
+      "features": [
+        "Özel Özellik Geliştirme",
+        "Kurumsal Düzeyde Güvenlik",
+        "Sorunsuz API Entegrasyonları",
+        "Ölçeklenebilir Bulut Mimari",
+        "Rol Tabanlı Erişim Kontrolü",
+        "Sürekli Destek & Güncellemeler"
+      ]
+    },
+    {
+      "num": "04",
+      "title": "Yapay Zeka Entegrasyonu",
+      "desc": "İşletmenizi akıllı, geleceğe dönük AI çözümleriyle güçlendiriyoruz. Tahminleyici analitik ve otomatik iş akışlarından özel makine öğrenmesi modellerine kadar.",
+      "features": [
+        "Tahminleyici Analitik & İçgörüler",
+        "Akıllı İş Akışı Otomasyonu",
+        "Özel Makine Öğrenmesi Modelleri",
+        "Sorunsuz Sistem Entegrasyonu"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "osgb-yonetim-sistemi",
+      "title": "OSGB Yönetim Sistemi",
+      "category": "Sektöre Özel Platform",
+      "subtitle": "OSGB Firmaları İçin Uçtan Uca Dijital Operasyon Platformu",
+      "description": "OSGB firmalarının tüm operasyon süreçlerini tek panel üzerinden yönetebilmesi için geliştirilmiş, sektöre özel kapsamlı bir iş yönetim platformu.",
+      "hero": {
+        "tagline": "Enterprise • SaaS Platform",
+        "overview": "OSGB Yönetim Sistemi; Ortak Sağlık Güvenlik Birimlerinin tüm operasyon süreçlerini tek panel üzerinden yönetebilmesi için geliştirilmiş, sektöre özel kapsamlı bir iş yönetim platformudur. Teklif yönetiminden belge takibine, yıllık İSG planlamasından sözleşme süreçlerine, eğitim organizasyonlarından muhasebe modüllerine kadar OSGB operasyonlarının tamamını merkezi bir yapıda birleştirir."
+      },
+      "stats": [
+        { "label": "Yönetilen Firma", "value": "500+" },
+        { "label": "İşlenen Belge", "value": "50K+" },
+        { "label": "Modül Sayısı", "value": "9" },
+        { "label": "Geliştirme Süresi", "value": "14 Ay" }
+      ],
+      "problem": "OSGB sektöründeki temel problemler: dağınık belge yönetimi, manuel takip süreçleri, Excel bağımlılığı, sözleşme ve teklif karmaşası, geçerlilik sürelerinin kontrol edilememesi ve personel-firma süreçlerinin tek merkezden yönetilememesi.",
+      "solution": "Tüm OSGB operasyonlarını tek bir merkezi platformda birleştiren, manuel iş yükünü azaltan ve sürdürülebilir dijital süreç yönetimi sağlayan kapsamlı bir sistem geliştirildi. Yüksek firma hacmine sahip OSGB'lerin karmaşık operasyon süreçlerini sadeleştirir.",
+      "features": [
+        {
+          "title": "Teklif Yönetim Sistemi",
+          "description": "Dinamik teklif oluşturma, otomatik fiyat hesaplama, tehlike sınıfına göre hizmet planlama, lokasyon bazlı teklif yönetimi ve teklif şablon sistemi."
+        },
+        {
+          "title": "Sözleşme Yönetimi",
+          "description": "Tekliften sözleşmeye dönüşüm süreci tamamen dijital. Sözleşme durum takibi, cari kart entegrasyonu, personel eşleştirme ve fatura kontrol sistemi."
+        },
+        {
+          "title": "Yıllık İSG Programlama",
+          "description": "12 aylık ziyaret planlama, binlerce ziyaret kaydı yönetimi, aylık operasyon kontrolü, ay kopyalama sistemi ve operasyon yoğunluk analizi."
+        },
+        {
+          "title": "Belge Yönetim Sistemi",
+          "description": "Toplu belge yükleme, sürükle-bırak dosya sistemi, geçerlilik tarihi hesaplama, onay mekanizması ve gelişmiş filtreleme sistemi."
+        },
+        {
+          "title": "Akıllı İSG Tablosu",
+          "description": "Sınırsız iş yeri desteği, belge durum matrisi, eksik belge analizi, tehlike sınıfı filtreleme ve büyük veri performans optimizasyonu."
+        },
+        {
+          "title": "Kategori & Geçerlilik Yönetimi",
+          "description": "Tehlike sınıfına göre geçerlilik hesaplama, çalışan sayısı koşulları, dinamik kategori sistemi ve mevzuat uyumlu yapı."
+        },
+        {
+          "title": "Muhasebe Modülleri",
+          "description": "Tahsilat yönetimi, fatura yönetimi, finansal raporlama, bekleyen ödeme kontrolü ve cari yönetimi."
+        },
+        {
+          "title": "Eğitim & Sınav Yönetimi",
+          "description": "Eğitim materyali yönetimi, sınav sistemi, sınav atamaları, eğitim evrak yönetimi ve raporlama altyapısı."
+        }
+      ],
+      "technologies": ["Laravel", "MySQL", "JavaScript", "Bootstrap", "AJAX", "Responsive UI", "Excel Entegrasyon", "PDF Generator"],
+      "gallery": [
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200"
+      ],
+      "timeline": "Ocak 2024 - Mart 2025",
+      "client": "Özel OSGB Firması",
+      "role": "Full Stack Developer & System Architect",
+      "gradient": "from-blue-600 to-cyan-600",
+      "color": "blue",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200"
+    },
+    {
+      "slug": "borubul-yonetim-platformu",
+      "title": "BoruBul Yönetim Platformu",
+      "category": "Dijital B2B Platform",
+      "subtitle": "Boru ve Çelik Tedarik Sektörü İçin Geliştirilmiş Uçtan Uca Dijital Yönetim Altyapısı",
+      "description": "Boru, profil ve yassı çelik ürünlerinin dijital ortamda yönetilmesini sağlayan kapsamlı bir stok, teklif ve talep yönetim platformu.",
+      "hero": {
+        "tagline": "B2B • Endüstriyel Platform",
+        "overview": "BoruBul; boru, profil ve yassı çelik ürünlerinin dijital ortamda yönetilmesini sağlayan kapsamlı bir stok, teklif ve talep yönetim platformudur. Üretici, stokçu ve tedarikçi firmaların günlük operasyonlarını hızlandırmak, teklif süreçlerini merkezi hale getirmek ve müşteri taleplerini daha verimli yönetebilmek amacıyla geliştirilmiştir."
+      },
+      "stats": [
+        { "label": "Ürün Kaydı", "value": "25K+" },
+        { "label": "Aktif Firma", "value": "120+" },
+        { "label": "Aylık Teklif", "value": "3K+" },
+        { "label": "Geliştirme Süresi", "value": "10 Ay" }
+      ],
+      "problem": "Boru ve çelik sektöründeki temel problemler: Excel tabanlı manuel stok takibi, teklif süreçlerinde zaman kaybı, dağınık müşteri ve sipariş yönetimi, teknik ürün bilgilerinin merkezi yönetilememesi ve yoğun telefon/WhatsApp trafiği.",
+      "solution": "Sektörde yaygın olarak kullanılan manuel Excel süreçlerini modern web teknolojileriyle dijitalleştirerek daha hızlı, daha şeffaf ve ölçeklenebilir bir operasyon altyapısı sunuldu. Üretici, stokçu ve müşteri aynı dijital platformda buluşturuldu.",
+      "features": [
+        {
+          "title": "Gelişmiş Stok Yönetimi",
+          "description": "Çelik boru, profil, yassı çelik ve hadde ürünleri için çap, et kalınlığı, boy, kalite, kaplama ve standart bazlı gelişmiş filtreleme sistemi."
+        },
+        {
+          "title": "Excel Entegrasyon Sistemi",
+          "description": "Mevcut Excel tabanlı stok altyapılarını hızlı şekilde sisteme aktarma, toplu veri güncelleme, dinamik veri eşleştirme ve kolon bazlı veri işleme."
+        },
+        {
+          "title": "Online Teklif & Talep Sistemi",
+          "description": "Müşterilerin ürün bazlı talepler oluşturabildiği, firmaların teklif süreçlerini yönetebildiği dijital B2B altyapısı. Sipariş durum takibi ve teklif arşivi."
+        },
+        {
+          "title": "Teknik Ürün Veri Yönetimi",
+          "description": "ASTM, API, EN standartları, çelik kalite sınıfları, kaplama bilgileri ve üretim tipi yönetimi ile detaylı teknik veri filtreleme sistemi."
+        }
+      ],
+      "technologies": ["Laravel", "MySQL", "JavaScript", "jQuery", "Bootstrap", "Excel Processing", "Dinamik Filtreleme", "Responsive Panel"],
+      "gallery": [
+        "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1200",
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200"
+      ],
+      "timeline": "Haziran 2024 - Nisan 2025",
+      "client": "Çelik Tedarik Firması",
+      "role": "Full Stack Developer",
+      "gradient": "from-orange-600 to-amber-600",
+      "color": "orange",
+      "image": "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1200"
+    }
+  ],
+  "contact": {
+    "email": "hello@wingcrea.com",
+    "phone": "+90 212 555 0123",
+    "address": "İstanbul, Türkiye",
+    "workingHours": "Pzt - Cum: 09:00 - 18:00"
+  }
+}
