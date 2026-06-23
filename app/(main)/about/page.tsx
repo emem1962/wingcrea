@@ -195,10 +195,16 @@ export default function AboutPage() {
                                         initial={{ opacity: 0, scale: 0 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: 0.5 + idx * 0.1, type: "spring" }}
-                                        animate={{ y: [0, -10, 0] }}
+                                        animate={{ y: [0, -10] }}
                                         transition={{
-                                            y: { duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" },
+                                            delay: 0.5 + idx * 0.1,
+                                            type: "spring",
+                                            y: {
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                repeatType: "reverse",
+                                                ease: "easeInOut"
+                                            },
                                         }}
                                         className="absolute w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-blue-400"
                                         style={{
