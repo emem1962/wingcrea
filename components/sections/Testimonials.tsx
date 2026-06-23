@@ -7,7 +7,7 @@ import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Nexora ekibi ile çalışmak inanılmaz bir deneyimdi. Ürünümüzü 3 ay içinde lansmana hazırladılar ve beklentilerimizin çok ötesine geçtiler.",
+      "Wingcrea ekibi ile çalışmak inanılmaz bir deneyimdi. Ürünümüzü 3 ay içinde lansmana hazırladılar ve beklentilerimizin çok ötesine geçtiler.",
     name: "Elif Yılmaz",
     role: "CEO, Finova",
     img: "https://i.pravatar.cc/150?img=47",
