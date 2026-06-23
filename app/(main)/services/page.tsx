@@ -275,19 +275,17 @@ export default function ServicesPage() {
                                                             scale: 1,
                                                         }}
                                                         viewport={{ once: true }}
+                                                        animate={{
+                                                            y: [0, -10],
+                                                        }}
                                                         transition={{
                                                             delay: 0.5 + idx * 0.1,
                                                             type: "spring",
-                                                        }}
-                                                        animate={{
-                                                            y: [0, -10],  // ← SADECE 2 KEYFRAME
-                                                        }}
-                                                        transition={{
                                                             y: {
                                                                 duration: 2,
                                                                 repeat: Infinity,
-                                                                repeatType: "reverse",  // ← Gidiş-dönüş
-                                                                ease: "easeInOut",      // ← ease kullan, spring değil
+                                                                repeatType: "reverse",
+                                                                ease: "easeInOut",
                                                             },
                                                         }}
                                                         className={`absolute w-3 h-3 rounded-full bg-gradient-to-br ${service.gradient}`}
