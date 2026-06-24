@@ -74,7 +74,7 @@ export function Services() {
             }
             scrollTimeoutRef.current = setTimeout(() => {
                 setIsScrolling(false);
-            }, 50);
+            }, 20);
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
