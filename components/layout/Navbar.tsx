@@ -82,94 +82,85 @@ export function Navbar() {
                     scrolled ? "py-2 md:py-3" : "py-4 md:py-6"
                 }`}
             >
-                <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between relative">
-                    
-                    {/* SOL: Mobil Hamburger */}
-                    <div className="w-10 md:hidden relative z-10">
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className="w-10 h-10 flex items-center justify-center glass rounded-full"
-                        >
-                            {open ? <X size={20} /> : <Menu size={20} />}
-                        </button>
-                    </div>
+               <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between relative">
+    
+    {/* SOL: Logo (Desktop'ta solda, mobilde ortada) */}
+    <div className="relative z-10 md:w-auto">
+        <Link href="/" className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-bold tracking-tight">
+            <motion.div
+                className="relative"
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+            >
+                <img
+                    src="/wingcrea_logo.png"
+                    alt="Wingcrea Logo"
+                    className="relative w-12 h-12 md:w-10 md:h-10 object-contain"
+                    style={{
+                        filter: 'brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.4))',
+                    }}
+                />
+                <div
+                    className="absolute inset-0 rounded-full blur-xl opacity-50"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
+                    }}
+                />
+            </motion.div>
+            <span className="text-white hidden sm:inline">Wingcrea</span>
+        </Link>
+    </div>
 
-                    {/* ORTA: Logo (Mobil & Desktop) */}
-                    <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-10">
-                        <Link href="/" className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-bold tracking-tight">
-                            <motion.div
-                                className="relative"
-                                animate={{
-                                    scale: [1, 1.15, 1],
-                                }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    repeatDelay: 1,
-                                }}
-                            >
-                                <img
-                                    src="/wingcrea_logo.png"
-                                    alt="Wingcrea Logo"
-                                    className="relative w-12 h-12 md:w-10 md:h-10 object-contain"
-                                    style={{
-                                        filter: 'brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.4))',
-                                    }}
-                                />
-                                <div
-                                    className="absolute inset-0 rounded-full blur-xl opacity-50"
-                                    style={{
-                                        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
-                                    }}
-                                />
-                            </motion.div>
-                            <span className="text-white hidden sm:inline">Wingcrea</span>
-                        </Link>
-                    </div>
+    {/* ORTA: Desktop Menü (Absolute Center) */}
+    <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 glass rounded-full px-2 py-2">
+        {links.map((l) => (
+            <MagneticButton key={l.name} strength={0.25}>
+                <button
+                    onClick={() => handleNavClick(l.href, l.anchor)}
+                    className="px-4 py-2 text-sm text-white/70 hover:text-white rounded-full hover:bg-white/10 transition-all"
+                >
+                    {l.name}
+                </button>
+            </MagneticButton>
+        ))}
+    </nav>
 
-                    {/* SAĞ: Desktop Nav + Proje Başlat / Mobil Başlat */}
-                    <div className="flex items-center gap-3 relative z-10">
-                        {/* Desktop: Nav menu */}
-                        <nav className="hidden md:flex items-center gap-1 glass rounded-full px-2 py-2">
-                            {links.map((l) => (
-                                <MagneticButton key={l.name} strength={0.25}>
-                                    <button
-                                        onClick={() => handleNavClick(l.href, l.anchor)}
-                                        className="px-4 py-2 text-sm text-white/70 hover:text-white rounded-full hover:bg-white/10 transition-all"
-                                    >
-                                        {l.name}
-                                    </button>
-                                </MagneticButton>
-                            ))}
-                        </nav>
+    {/* SAĞ: Mobil Hamburger + Butonlar */}
+    <div className="flex items-center gap-3 relative z-10">
+        {/* Mobil: Hamburger */}
+        <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden w-10 h-10 flex items-center justify-center glass rounded-full"
+        >
+            {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
 
-                        {/* Mobil: Küçük Başlat butonu */}
-                        <button
-                            onClick={scrollToContact}
-                            className="md:hidden relative flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white rounded-full overflow-hidden"
-                            style={{
-                                background: "rgba(10, 10, 15, 0.85)",
-                                backdropFilter: "blur(20px)",
-                                border: "1px solid rgba(255, 255, 255, 0.15)",
-                            }}
-                        >
-                            <span className="relative flex h-1.5 w-1.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
-                            </span>
-                            <span>Başlat</span>
-                            <span>→</span>
-                        </button>
+        {/* Mobil: Başlat butonu */}
+        <button
+            onClick={scrollToContact}
+            className="md:hidden relative flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white rounded-full"
+            style={{
+                background: "rgba(10, 10, 15, 0.85)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+            }}
+        >
+            <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+            </span>
+            <span>Başlat</span>
+            <span>→</span>
+        </button>
 
-                        {/* Desktop: Morphing buton */}
-                        <div className="hidden md:block">
-                            <MorphingButton onClick={scrollToContact}>
-                                Proje Başlat
-                            </MorphingButton>
-                        </div>
-                    </div>
-                </div>
+        {/* Desktop: Morphing buton */}
+        <div className="hidden md:block">
+            <MorphingButton onClick={scrollToContact}>
+                Proje Başlat
+            </MorphingButton>
+        </div>
+    </div>
+</div>
             </motion.header>
 
             {/* Mobil Menü */}
