@@ -7,7 +7,7 @@ const services = [
     {
         num: "01",
         title: "Web Sitesi Tasarımı",
-        desc: "Sadece web sitesi tasarlamıyoruz — markanızı yükselten ve sonuç getiren stratejik dijital varlıklar inşa ediyoruz.",
+        desc: "Sadece web sitesi tasarlamıyoruz — markanızı yükselten ve sonuç getiren stratejik dijital varlıklar inşa ediyoruz. Şık landing page'lerden karmaşık kurumsal platformlara kadar, her piksel amaçlı, her etkileşim bilinçli.",
         features: [
             "Özel UI/UX Tasarımı",
             "Tam Responsive",
@@ -116,7 +116,7 @@ export function Services() {
                         </div>
                     </div>
 
-                    {/* Hizmet Satırları - CSS ONLY HOVER */}
+                    {/* Hizmet Satırları */}
                     <div className="border-t border-white/10">
                         {services.map((service, i) => (
                             <motion.div
@@ -127,22 +127,22 @@ export function Services() {
                                 transition={{ delay: i * 0.08 }}
                                 className="group relative border-b border-white/10 cursor-pointer"
                             >
-                                {/* Hover arka plan - CSS only */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
+                                {/* Hover arka plan - SADECE DESKTOP */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-blue-500/0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
 
                                 {/* Ana içerik */}
                                 <div className="relative grid grid-cols-12 gap-4 py-8 md:py-10 items-center px-2 md:px-6">
                                     {/* Numara */}
                                     <div className="col-span-2 md:col-span-1">
-                                        <span className="text-sm md:text-base font-mono text-white/40 group-hover:text-violet-400 transition-colors duration-300">
+                                        <span className="text-sm md:text-base font-mono text-white/40 md:group-hover:text-violet-400 transition-colors duration-300">
                                             {service.num}
                                         </span>
                                     </div>
 
                                     {/* Başlık */}
                                     <div className="col-span-10 md:col-span-5">
-                                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight group-hover:translate-x-4 transition-transform duration-500">
-                                            <span className="text-white/90 group-hover:text-white transition-colors duration-300">
+                                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight md:group-hover:translate-x-4 transition-transform duration-500">
+                                            <span className="text-white/90 md:group-hover:text-white transition-colors duration-300">
                                                 {service.title}
                                             </span>
                                         </h3>
@@ -153,30 +153,46 @@ export function Services() {
                                         {service.features.slice(0, 3).map((feature) => (
                                             <span
                                                 key={feature}
-                                                className="text-xs px-3 py-1 rounded-full border border-white/10 text-white/50 group-hover:border-violet-500/30 group-hover:text-violet-300 transition-all duration-300"
+                                                className="text-xs px-3 py-1 rounded-full border border-white/10 text-white/50 md:group-hover:border-violet-500/30 md:group-hover:text-violet-300 transition-all duration-300"
                                             >
                                                 {feature}
                                             </span>
                                         ))}
                                     </div>
 
-                                    {/* Ok ikonu */}
+                                    {/* Ok ikonu - SADECE DESKTOP */}
                                     <div className="hidden md:flex col-span-2 justify-end">
-                                        <div className="group-hover:translate-x-0 group-hover:opacity-100 -translate-x-2 opacity-30 transition-all duration-300">
+                                        <div className="md:group-hover:translate-x-0 md:group-hover:opacity-100 -translate-x-2 opacity-30 transition-all duration-300">
                                             <ArrowUpRight
                                                 size={32}
-                                                className="text-white/60 group-hover:text-violet-400 transition-colors duration-300"
+                                                className="text-white/60 md:group-hover:text-violet-400 transition-colors duration-300"
                                             />
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Açıklama - Hover'da görünür, CSS only */}
-                                <div className="overflow-hidden max-h-0 group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                                    <div className="px-2 md:px-6 pb-8 md:pb-10 pl-12 md:pl-24">
-                                        <p className="text-base md:text-lg text-white/60 max-w-4xl leading-relaxed">
+                                {/* 📱 Açıklama - MOBİLDE HER ZAMAN AÇIK, DESKTOP'TA HOVER İLE */}
+                                <div 
+                                    className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] max-h-[500px] opacity-100 md:max-h-0 md:opacity-0 md:group-hover:max-h-[500px] md:group-hover:opacity-100"
+                                >
+                                    <div className="px-2 md:px-6 pb-8 md:pb-10 pl-6 md:pl-24">
+                                        {/* Açıklama metni */}
+                                        <p className="text-base md:text-lg text-white/60 max-w-4xl leading-relaxed mb-6">
                                             {service.desc}
                                         </p>
+
+                                        {/* 📱 Mobilde özellikler listesi */}
+                                        <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                                            {service.features.map((feature) => (
+                                                <div
+                                                    key={feature}
+                                                    className="flex items-center gap-2 text-sm text-white/70"
+                                                >
+                                                    <span className="text-violet-400 text-xs">✦</span>
+                                                    <span>{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
