@@ -1,7 +1,7 @@
 "use client";
 
-/* import { useState } from "react";
- */import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
 import Link from "next/link";
 
