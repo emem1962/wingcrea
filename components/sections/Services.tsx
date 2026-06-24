@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const services = [
@@ -59,6 +59,32 @@ const services = [
 
 export function Services() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // 🎯 Scroll sırasında hover'ı devre dışı bırak
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolling(true);
+            setHoveredIndex(null); // Scroll sırasında hover'ı kapat
+
+            // Scroll timeout - 150ms sonra scroll bitti kabul et
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+            scrollTimeoutRef.current = setTimeout(() => {
+                setIsScrolling(false);
+            }, 150);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+        };
+    }, []);
 
     return (
         <section id="services" className="relative py-32 px-6">
@@ -78,8 +104,7 @@ export function Services() {
                         viewport={{ once: true }}
                         className="text-4xl md:text-6xl font-bold mb-4"
                     >
-                        Dijital dönüşümünüz için{" "}
-                        <span className="gradient-text">uçtan uca çözümler</span>
+                        Uçtan uca <span className="gradient-text">dijital çözümler</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -106,7 +131,7 @@ export function Services() {
                                 — Uzmanlık Alanları
                             </div>
                             <h4 className="text-3xl md:text-5xl font-bold tracking-tight">
-                                Neler <span className="gradient-text">Yaparız</span>
+                                Neler <span className="gradient-text">Yaparım</span>
                             </h4>
                         </div>
                         <div className="hidden md:block text-right">
@@ -119,107 +144,114 @@ export function Services() {
                         </div>
                     </div>
 
-                    {/* Hizmet Listesi - Büyük Tipografi */}
+                    {/* Hizmet Listesi */}
                     <div className="border-t border-white/10">
-                        {services.map((service, i) => (
-                            <motion.div
-                                key={service.num}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}
-                                onMouseEnter={() => setHoveredIndex(i)}
-                                onMouseLeave={() => setHoveredIndex(null)}
-                                className="group relative border-b border-white/10 overflow-hidden cursor-pointer"
-                            >
-                                {/* Hover arka plan gradient */}
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-blue-500/0"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
-                                    transition={{ duration: 0.4 }}
-                                />
+                        {services.map((service, i) => {
+                            const isHovered = hoveredIndex === i && !isScrolling;
 
-                                {/* Ana içerik */}
-                                <div className="relative grid grid-cols-12 gap-4 py-8 md:py-12 items-center px-2 md:px-6">
-                                    {/* Numara */}
-                                    <div className="col-span-2 md:col-span-1">
-                                        <span className="text-sm md:text-base font-mono text-white/40 group-hover:text-violet-400 transition-colors">
-                                            {service.num}
-                                        </span>
-                                    </div>
+                            return (
+                                <div
+                                    key={service.num}
+                                    onMouseEnter={() => !isScrolling && setHoveredIndex(i)}
+                                    onMouseLeave={() => setHoveredIndex(null)}
+                                    className="group relative border-b border-white/10 overflow-hidden cursor-pointer"
+                                >
+                                    {/* Hover arka plan gradient - CSS transition ile */}
+                                    <div
+                                        className={`absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-blue-500/0 transition-opacity duration-400 ${
+                                            isHovered ? "opacity-100" : "opacity-0"
+                                        }`}
+                                    />
 
-                                    {/* Başlık */}
-                                    <div className="col-span-10 md:col-span-7">
-                                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight group-hover:translate-x-4 transition-transform duration-500">
-                                            <span className="text-white/90 group-hover:text-white">
-                                                {service.title}
+                                    {/* Ana içerik */}
+                                    <div className="relative grid grid-cols-12 gap-4 py-8 md:py-10 items-center px-2 md:px-6">
+                                        {/* Numara */}
+                                        <div className="col-span-2 md:col-span-1">
+                                            <span className={`text-sm md:text-base font-mono transition-colors duration-300 ${
+                                                isHovered ? "text-violet-400" : "text-white/40"
+                                            }`}>
+                                                {service.num}
                                             </span>
-                                        </h3>
+                                        </div>
+
+                                        {/* Başlık */}
+                                        <div className="col-span-10 md:col-span-5">
+                                            <h3 className={`text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight transition-transform duration-500 ${
+                                                isHovered ? "translate-x-4" : "translate-x-0"
+                                            }`}>
+                                                <span className={`transition-colors duration-300 ${
+                                                    isHovered ? "text-white" : "text-white/90"
+                                                }`}>
+                                                    {service.title}
+                                                </span>
+                                            </h3>
+                                        </div>
+
+                                        {/* Tags - Desktop */}
+                                        <div className="hidden md:flex col-span-4 gap-2 flex-wrap items-center">
+                                            {service.features.slice(0, 3).map((feature) => (
+                                                <span
+                                                    key={feature}
+                                                    className={`text-xs px-3 py-1 rounded-full border transition-all duration-300 ${
+                                                        isHovered
+                                                            ? "border-violet-500/30 text-violet-300"
+                                                            : "border-white/10 text-white/50"
+                                                    }`}
+                                                >
+                                                    {feature}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        {/* Ok ikonu */}
+                                        <div className="hidden md:flex col-span-2 justify-end">
+                                            <div className={`transition-all duration-300 ${
+                                                isHovered ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-30"
+                                            }`}>
+                                                <ArrowUpRight
+                                                    size={32}
+                                                    className={`transition-colors duration-300 ${
+                                                        isHovered ? "text-violet-400" : "text-white/60"
+                                                    }`}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    {/* Ok ikonu */}
-                                    <div className="hidden md:flex col-span-4 justify-end">
-                                        <motion.div
-                                            animate={{
-                                                x: hoveredIndex === i ? 0 : -10,
-                                                opacity: hoveredIndex === i ? 1 : 0.3,
-                                            }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            <ArrowUpRight
-                                                size={32}
-                                                className="text-white/60 group-hover:text-violet-400 transition-colors"
-                                            />
-                                        </motion.div>
+                                    {/* Açıklama + Özellikler - CSS transition ile */}
+                                    <div
+                                        className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                                            isHovered ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                                        }`}
+                                    >
+                                        <div className="px-2 md:px-6 pb-8 md:pb-10 pl-12 md:pl-24">
+                                            {/* Açıklama */}
+                                            <p className="text-base md:text-lg text-white/60 max-w-4xl leading-relaxed mb-6">
+                                                {service.desc}
+                                            </p>
+
+                                            {/* Özellikler Grid */}
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 max-w-4xl">
+                                                {service.features.map((feature, idx) => (
+                                                    <div
+                                                        key={feature}
+                                                        className="flex items-center gap-2 text-sm text-white/70"
+                                                        style={{
+                                                            transition: `opacity 0.3s ease ${idx * 0.05}s, transform 0.3s ease ${idx * 0.05}s`,
+                                                            opacity: isHovered ? 1 : 0,
+                                                            transform: isHovered ? "translateX(0)" : "translateX(-10px)",
+                                                        }}
+                                                    >
+                                                        <span className="text-violet-400 text-xs">✦</span>
+                                                        <span>{feature}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                {/* Açıklama + Özellikler - Hover'da açılır */}
-                                <AnimatePresence>
-                                    {hoveredIndex === i && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{
-                                                duration: 0.5,
-                                                ease: [0.22, 1, 0.36, 1],
-                                            }}
-                                            className="overflow-hidden"
-                                        >
-                                            <div className="px-2 md:px-6 pb-10 md:pb-12 pl-12 md:pl-24">
-                                                {/* Açıklama */}
-                                                <p className="text-base md:text-lg text-white/60 max-w-4xl leading-relaxed mb-8">
-                                                    {service.desc}
-                                                </p>
-
-                                                {/* Özellikler Grid */}
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 max-w-4xl">
-                                                    {service.features.map((feature, idx) => (
-                                                        <motion.div
-                                                            key={feature}
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{
-                                                                delay: idx * 0.05,
-                                                                duration: 0.3,
-                                                            }}
-                                                            className="flex items-center gap-2 text-sm text-white/70"
-                                                        >
-                                                            <span className="text-violet-400 text-xs">
-                                                                ✦
-                                                            </span>
-                                                            <span>{feature}</span>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </motion.div>
             </div>
